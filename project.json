@@ -1,0 +1,26 @@
+{
+  "overview": "NextFlow is an LLM workflow builder inspired by Krea.ai. Build visual AI pipelines by connecting nodes on a canvas — upload images and videos, apply processing steps, and chain multiple Gemini AI calls to generate complex content like marketing kits and product descriptions.",
+  "features": [
+    "Visual React Flow canvas with drag-and-drop node creation, dot grid, pan/zoom, and minimap",
+    "Six node types: Text, Upload Image, Upload Video, Run LLM, Crop Image, and Extract Frame",
+    "Google Gemini API integration for multimodal LLM execution with pulsating glow effects",
+    "Frontend-only image cropping (canvas) and video frame extraction",
+    "Workflow execution with parallel branches, dependency resolution, and real-time node status",
+    "Execution history sidebar with 100-record capacity, status badges, and expandable node logs",
+    "Internet Identity authentication with user-scoped workflows and history",
+    "Workflow persistence, JSON export/import, and sample 'Product Marketing Kit Generator' workflow",
+    "Undo/redo, cycle detection, type-safe node connections, and DAG validation"
+  ],
+  "category": "productivity",
+  "tags": [
+    "workflow",
+    "llm",
+    "ai",
+    "react-flow",
+    "gemini",
+    "canvas",
+    "automation",
+    "nodes"
+  ],
+  "last_updated": "2026-04-14T14:25:48.163Z"
+}

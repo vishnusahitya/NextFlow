@@ -1,0 +1,40 @@
+{
+  "name": "@nextflow/web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "trigger:dev": "trigger.dev dev"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^6.23.0",
+    "@google/generative-ai": "^0.21.0",
+    "@prisma/client": "^6.6.0",
+    "@trigger.dev/sdk": "^3.3.17",
+    "@xyflow/react": "^12.8.4",
+    "execa": "^9.5.2",
+    "ffmpeg-static": "^5.2.0",
+    "lucide-react": "^0.511.0",
+    "next": "^15.2.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tmp-promise": "^3.0.3",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "prisma": "^6.6.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  }
+}
