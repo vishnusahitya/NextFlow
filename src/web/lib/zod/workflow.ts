@@ -53,6 +53,21 @@ export const executionRequestSchema = z.object({
   workflowId: z.string().min(1),
   mode: z.enum(["full", "partial", "single"]),
   selectedNodeIds: z.array(z.string()).optional(),
+}).superRefine((value, ctx) => {
+  if ((value.mode === "partial" || value.mode === "single") && (!value.selectedNodeIds || value.selectedNodeIds.length === 0)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["selectedNodeIds"],
+      message: "selectedNodeIds is required for partial/single mode",
+    });
+  }
+  if (value.mode === "single" && (value.selectedNodeIds?.length ?? 0) !== 1) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["selectedNodeIds"],
+      message: "single mode requires exactly one selected node",
+    });
+  }
 });
 
 export type WorkflowCreateInput = z.infer<typeof workflowCreateSchema>;

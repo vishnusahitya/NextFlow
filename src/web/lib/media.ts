@@ -1,14 +1,44 @@
-import { promises as fs } from "node:fs";
+import { existsSync, promises as fs } from "node:fs";
+import { createRequire } from "node:module";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { execa } from "execa";
 import ffmpegPath from "ffmpeg-static";
 
-function ensureFfmpegPath() {
-  if (!ffmpegPath) {
-    throw new Error("ffmpeg-static binary is unavailable");
+const require = createRequire(import.meta.url);
+
+function stripWrappingQuotes(value: string) {
+  return value.replace(/^"(.*)"$/, "$1");
+}
+
+function resolveFfmpegFromRequire() {
+  try {
+    const loaded = require("ffmpeg-static") as string | null | undefined;
+    return loaded ?? null;
+  } catch {
+    return null;
   }
-  return ffmpegPath;
+}
+
+function ensureFfmpegPath() {
+  const candidates = [
+    process.env.FFMPEG_BIN ?? null,
+    ffmpegPath,
+    resolveFfmpegFromRequire(),
+  ]
+    .filter((candidate): candidate is string => Boolean(candidate))
+    .map((candidate) => stripWrappingQuotes(candidate));
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  const details = candidates.length > 0 ? candidates.join(", ") : "(none)";
+  throw new Error(
+    `ffmpeg binary is unavailable. Checked paths: ${details}.`,
+  );
 }
 
 function bufferToDataUrl(buffer: Buffer, mimeType: string) {

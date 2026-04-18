@@ -1,19 +1,15 @@
-import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { signTransloaditParams } from "@/lib/transloadit";
 
 const templateSchema = z.object({
+  kind: z.enum(["image", "video"]).optional(),
   maxSize: z.number().int().positive().optional(),
   accept: z.array(z.string()).optional(),
+  signatureAlgorithm: z.enum(["sha1", "sha384"]).optional(),
 });
 
 export async function POST(req: NextRequest) {
-  const { userId } = await auth();
-  if (!userId) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const payload = await req.json().catch(() => ({}));
   const parsed = templateSchema.safeParse(payload);
   if (!parsed.success) {
@@ -24,13 +20,23 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const maxSize = parsed.data.maxSize ?? 100 * 1024 * 1024;
+    const accepted = (parsed.data.accept ?? []).map((item) => item.toLowerCase());
+    const isVideo = parsed.data.kind === "video";
+
     const signed = signTransloaditParams({
       steps: {
-        upload: {
+        ":original": {
           robot: "/upload/handle",
+          accepts: accepted.length > 0 ? accepted : undefined,
+          ...(isVideo ? { result: true } : {}),
         },
       },
-    });
+      fields: {
+        max_file_size: String(maxSize),
+      },
+    }, parsed.data.signatureAlgorithm);
+
     return NextResponse.json(signed);
   } catch (error) {
     return NextResponse.json(

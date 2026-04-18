@@ -1,0 +1,145 @@
+
+> @nextflow/web@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.15
+   - Local:        http://localhost:3004
+   - Network:      http://192.168.55.104:3004
+   - Environments: .env.local, .env
+
+ ✓ Starting...
+ ✓ Ready in 8s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 3.1s (221 modules)
+ ○ Compiling /sign-in/[[...sign-in]] ...
+ ✓ Compiled /sign-in/[[...sign-in]] in 13.4s (912 modules)
+ HEAD /sign-in 200 in 1082ms
+ HEAD /workflows/sample 404 in 81ms
+ ○ Compiling /api/workflows/[id]/execute ...
+ ✓ Compiled /api/workflows/[id]/execute in 13.2s (917 modules)
+ POST /api/workflows/blank/execut ✓ Compiled in 14.4s (334 modules)
+ ✓ Compiled in 1552ms (334 modules)
+ ✓ Compiled in 553ms (334 modules)
+ ✓ Compiled in 565ms (334 modules)
+ ✓ Compiled in 442ms (334 modules)
+ ✓ Compiled in 1081ms (334 modules)
+ ✓ Compiled in 533ms (334 modules)
+ ✓ Compiled in 627ms (334 modules)
+ ✓ Compiled in 712ms (334 modules)
+ ✓ Compiled in 2.1s (555 modules)
+ ✓ Compiled in 988ms (334 modules)
+5s (335 modules)
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 2.6s (945 modules)
+ GET / 404 in 3950ms
+ GET / 200 in 1400ms
+ GET / 307 in 1451ms
+ ○ Compiling /workflows/[id] ...
+ ✓ Compiled /workflows/[id] in 4.2s (1298 modules)
+ GET /workflows/new 200 in 5222ms
+ GET / 200 in 5324ms
+ GET / 307 in 1229ms
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+ GET /workflows/new 200 in 4943ms
+ POST /workflows/new 200 in 111ms
+ ✓ Compiled in 2.8s (1307 modules)
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+ GET /workflows/new 200 in 2865ms
+ ✓ Compiled in 706ms (513 modules)
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+ GET /workflows/new 200 in 2383ms
+ ✓ Compiled in 704ms (513 modules)
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+ GET /workflows/new 200 in 2327ms
+prisma:error 
+Invalid `prisma.user.upsert()` invocation:
+
+
+Authentication failed against database server, the provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for th ✓ Compiled in 486ms (513 modules)
+ ✓ Compiled in 1135ms (513 modules)
+ ✓ Compiled in 610ms (513 modules)
+ ✓ Compiled in 723ms (513 modules)
+ ✓ Compiled in 884ms (513 modules)
+ ✓ Compiled in 2.3s (734 modules)
+ ✓ Compiled in 1121ms (513 modules)
+ provided database credentials for `(not available)` are not valid.
+
+Please make sure to provide valid database credentials for the database server at the configured address.
+ GET /workflows/new 200 in 2857ms
+ ○ Compiling /workflows/sample ...
+ ✓ Compiled /workflows/sample in 1579ms (1299 modules)
+ GET /workflows/sample 200 in 2067ms
+ GET /workflows/sample 200 in 86ms
+ ○ Compiling /api/executions ...
+ ✓ Compiled /api/executions in 1036ms (807 modules)
+ GET /api/executions?workflowId=sample 200 in 1375ms
+ GET /api/executions?workflowId=sample 200 in 1414ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1589ms (1326 modules)
+ HEAD /workflows/new 404 in 2772ms
+ GET /workflows/sample 200 in 153ms
+ GET /workflows/sample 200 in 508ms
+ GET /api/executions?workflowId=sample 200 in 82ms
+ POST /workflows/sample 200 in 91ms
+ ○ Compiling /api/workflows/[id]/execute ...
+ ✓ Compiled /api/workflows/[id]/execute in 5s (1283 modules)
+ POST /api/workflows/sample/execute 200 in 6075ms
+ ✓ Compiled in 3.3s (1795 modules)
+ GET /workflows/sample 200 in 695ms
+ ✓ Compiled in 634ms (514 modules)
+ GET /workflows/sample 200 in 110ms
+ ✓ Compiled in 783ms (514 modules)
+ GET /workflows/sample 200 in 140ms
+ ✓ Compiled in 1815ms (1313 modules)
+ GET /workflows/sample 200 in 821ms
+ ✓ Compiled in 3.9s (1534 modules)
+ GET /workflows/sample 200 in 3616ms
+ GET /workflows/sample 200 in 146ms
+ GET /workflows/sample 200 in 1175ms
+ ○ Compiling /api/executions ...
+ ✓ Compiled /api/executions in 1277ms (807 modules)
+ GET /api/executions?workflowId=sample 200 in 2802ms
+ POST /workflows/sample 200 in 3192ms
+ ✓ Compiled in 3.1s (1311 modules)
+ GET /workflows/sample 200 in 881ms
+ ○ Compiling /workflows/blank ...
+ ✓ Compiled /workflows/blank in 1947ms (1302 modules)
+ GET /workflows/blank 200 in 2702ms
+ GET /workflows/blank 200 in 132ms
+ ○ Compiling /api/executions ...
+ ✓ Compiled /api/executions in 870ms (808 modules)
+ GET /api/executions?workflowId=blank 200 in 1285ms
+ GET /api/executions?workflowId=blank 200 in 1351ms

@@ -29,11 +29,43 @@ export type WorkflowEdge = {
 export type ExecutionMode = "full" | "partial" | "single";
 export type ExecutionStatus = "success" | "failed" | "partial" | "running";
 
+export type TextNodeOutput = {
+  text: string;
+};
+
+export type UploadImageNodeOutput = {
+  image_url: string;
+};
+
+export type UploadVideoNodeOutput = {
+  video_url: string;
+};
+
+export type CropImageNodeOutput = {
+  cropped_image_url: string;
+};
+
+export type ExtractFrameNodeOutput = {
+  frame_image_url: string;
+};
+
+export type LLMNodeOutput = {
+  output: string;
+};
+
+export type WorkflowNodeOutput =
+  | TextNodeOutput
+  | UploadImageNodeOutput
+  | UploadVideoNodeOutput
+  | CropImageNodeOutput
+  | ExtractFrameNodeOutput
+  | LLMNodeOutput;
+
 export type NodeExecutionLog = {
   nodeId: string;
   nodeType: string;
   inputs: Record<string, unknown>;
-  outputs?: unknown;
+  outputs: WorkflowNodeOutput | Record<string, never>;
   error?: string | null;
   durationMs: number;
 };

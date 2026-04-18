@@ -3,7 +3,7 @@ import { SignIn } from "@clerk/nextjs";
 export default function SignInPage() {
   return (
     <main className="min-h-screen flex items-center justify-center dot-grid">
-      <SignIn forceRedirectUrl="/workflows/new" />
+      <SignIn forceRedirectUrl="/workflows/blank" signUpUrl="/sign-up" />
     </main>
   );
 }

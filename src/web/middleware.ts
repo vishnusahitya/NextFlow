@@ -4,7 +4,7 @@ const isProtectedRoute = createRouteMatcher([
   "/workflows(.*)",
   "/api/workflows(.*)",
   "/api/executions(.*)",
-  "/api/uploads(.*)",
+  "/api/uploads/transloadit(.*)",
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
@@ -14,5 +14,5 @@ export default clerkMiddleware(async (auth, req) => {
 });
 
 export const config = {
-  matcher: ["/((?!_next|.*\\..*).*)", "/api/(.*)"],
+  matcher: ["/((?!_next|.*\\..*).*)", "/(api)(.*)"],
 };

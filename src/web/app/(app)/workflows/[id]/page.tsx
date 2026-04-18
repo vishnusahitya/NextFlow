@@ -12,54 +12,58 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
   if (!userId) {
     redirect("/sign-in");
   }
-
   const { id } = await params;
-  if (id === "new") {
-    // Ensure user exists in DB
-    await prisma.user.upsert({
-      where: { id: userId },
-      update: {},
-      create: { id: userId },
-    });
 
-    const workflow = await prisma.workflow.create({
-      data: {
+  try {
+    if (id === "new") {
+      // Ensure user exists in DB
+      await prisma.user.upsert({
+        where: { id: userId },
+        update: {},
+        create: { id: userId },
+      });
+
+      const workflow = await prisma.workflow.create({
+        data: {
+          userId,
+          name: "Untitled Workflow",
+          nodes: [],
+          edges: [],
+        },
+      });
+      redirect(`/workflows/${workflow.id}`);
+    }
+
+    const workflow = await prisma.workflow.findFirst({
+      where: {
+        id,
         userId,
-        name: "Untitled Workflow",
-        nodes: [],
-        edges: [],
+      },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        nodes: true,
+        edges: true,
+        createdAt: true,
+        updatedAt: true,
       },
     });
-    redirect(`/workflows/${workflow.id}`);
+
+    if (!workflow) {
+      notFound();
+    }
+
+    return (
+      <WorkflowBuilderPage
+        workflow={{
+          ...workflow,
+          nodes: workflow.nodes as unknown[],
+          edges: workflow.edges as unknown[],
+        }}
+      />
+    );
+  } catch {
+    redirect("/workflows/blank");
   }
-
-  const workflow = await prisma.workflow.findFirst({
-    where: {
-      id,
-      userId,
-    },
-    select: {
-      id: true,
-      name: true,
-      description: true,
-      nodes: true,
-      edges: true,
-      createdAt: true,
-      updatedAt: true,
-    },
-  });
-
-  if (!workflow) {
-    notFound();
-  }
-
-  return (
-    <WorkflowBuilderPage
-      workflow={{
-        ...workflow,
-        nodes: workflow.nodes as unknown[],
-        edges: workflow.edges as unknown[],
-      }}
-    />
-  );
 }
